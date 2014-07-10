@@ -1,0 +1,10 @@
+# Message to send /before/ the term's message is sent.
+pre_message: "&2CMP &4\u00BB &c=== &6Chat warning &c==="
+
+# Message to send /after/ the term's message is sent.
+post_message: "&2CMP &4\u00BB &c=== &6You may repeat your message to send it &c==="
+
+terms:
+    # Blocked term, and the message to send.
+    # Can contain {PLAYER}, which will be replaced with the the player's username.
+    cupcake: "&c\u00BB &1{PLAYER}&6, are you sure you want to talk about &1cupcakes&6? &1Muffins&6 are way better!"
