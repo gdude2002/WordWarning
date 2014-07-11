@@ -16,26 +16,34 @@ import java.util.*;
 
 public final class WordWarning extends JavaPlugin {
 
+    // Storage of the terms and messages specified in the configuration
     public Map<String, Object> terms;
 
+    // Storage of who's seen what warnings
     public Map<String, HashSet<UUID>> usageMap;
 
+    // Configured message sent before and after warnings
     public String preMessage;
     public String postMessage;
 
+    // Listener for chat events
     public ChatListener listener;
 
     @Override
     public void onEnable() {
+        // Save default config if it doesn't exist, and reload it in case the plugin's been reloaded
         this.saveDefaultConfig();
         this.reloadConfig();
 
+        // Load up our terms and reset the map of who's seen the warnings
         this.terms = this.getConfig().getConfigurationSection("terms").getValues(false);
         this.usageMap = new HashMap<>();
 
+        // Load up the pre/post-warning messages
         this.preMessage = translateAlternateColorCodes('&', this.getConfig().getString("pre_message"));
         this.postMessage = translateAlternateColorCodes('&', this.getConfig().getString("post_message"));
 
+        // Create a new chat listener and register it
         listener = new ChatListener(this);
         this.getServer().getPluginManager().registerEvents(listener, this);
 
@@ -43,14 +51,14 @@ public final class WordWarning extends JavaPlugin {
     }
 
     public String checkMessage(String message, UUID user) {
-        for (String key : terms.keySet()) {
-            if (stringContains(message, key)) {
-                if (!usageMap.containsKey(key)) {
-                    usageMap.put(key, new HashSet<UUID>());
+        for (String key : terms.keySet()) { // For each term..
+            if (stringContains(message, key)) { // If the term is in the message..
+                if (!usageMap.containsKey(key)) { // If nobody's used the term before
+                    usageMap.put(key, new HashSet<UUID>()); // Store it so we know who's used it
                 }
 
-                if (!usageMap.get(key).contains(user)) {
-                    return key;
+                if (!usageMap.get(key).contains(user)) { // If the user hasn't used the term before..
+                    return key; // Return it
                 }
             }
         }
@@ -59,6 +67,7 @@ public final class WordWarning extends JavaPlugin {
     }
 
     public boolean stringContains(String haystack, String needle) {
+        // Quick 'n dirty case-insensitive string contains method
         return haystack.toLowerCase().contains(needle.toLowerCase());
     }
 }
