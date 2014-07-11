@@ -10,9 +10,9 @@ package com.archivesmc.wordwarning;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
-
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
+
+import java.util.*;
 
 public final class WordWarning extends JavaPlugin {
 

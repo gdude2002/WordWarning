@@ -5,10 +5,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import static org.bukkit.ChatColor.translateAlternateColorCodes;
+
 import java.util.HashSet;
 import java.util.UUID;
 
-import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 public class ChatListener implements Listener {
 
