@@ -18,8 +18,7 @@ public final class WordWarning extends JavaPlugin {
 
     public Map<String, Object> terms;
 
-    // Change to HashSet?
-    public Map<String, ArrayList<UUID>> usageMap;
+    public Map<String, HashSet<UUID>> usageMap;
 
     public String preMessage;
     public String postMessage;
@@ -47,7 +46,7 @@ public final class WordWarning extends JavaPlugin {
         for (String key : terms.keySet()) {
             if (stringContains(message, key)) {
                 if (!usageMap.containsKey(key)) {
-                    usageMap.put(key, new ArrayList<UUID>());
+                    usageMap.put(key, new HashSet<UUID>());
                 }
 
                 if (!usageMap.get(key).contains(user)) {

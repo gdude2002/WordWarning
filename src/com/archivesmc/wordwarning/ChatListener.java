@@ -5,7 +5,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.UUID;
 
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
@@ -26,7 +26,7 @@ public class ChatListener implements Listener {
             event.setCancelled(true);
 
             if (! this.plugin.usageMap.containsKey(match)) {
-                this.plugin.usageMap.put(match, new ArrayList<UUID>());
+                this.plugin.usageMap.put(match, new HashSet<UUID>());
             }
 
             this.plugin.usageMap.get(match).add(event.getPlayer().getUniqueId());
