@@ -8,8 +8,10 @@ package com.archivesmc.wordwarning;
  * message.
  */
 
-import org.bukkit.plugin.java.JavaPlugin;
+import net.milkbowl.vault.permission.Permission;
 
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 import java.util.*;
@@ -29,6 +31,9 @@ public final class WordWarning extends JavaPlugin {
     // Listener for chat events
     public ChatListener listener;
 
+    // Vault permissions handler
+    public Permission permissions;
+
     @Override
     public void onEnable() {
         // Save default config if it doesn't exist, and reload it in case the plugin's been reloaded
@@ -43,11 +48,24 @@ public final class WordWarning extends JavaPlugin {
         this.preMessage = translateAlternateColorCodes('&', this.getConfig().getString("pre_message"));
         this.postMessage = translateAlternateColorCodes('&', this.getConfig().getString("post_message"));
 
+        // Load up permissions
+        if (! this.setupPermissions()) {
+            this.getLogger().warning("Unable to load Vault. Please make sure it's installed and enabled.");
+            this.getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         // Create a new chat listener and register it
         listener = new ChatListener(this);
         this.getServer().getPluginManager().registerEvents(listener, this);
 
         this.getLogger().info(String.format("Loaded %s terms.", terms.size()));
+    }
+
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        this.permissions = rsp.getProvider();
+        return this.permissions != null;
     }
 
     public String checkMessage(String message, UUID user) {

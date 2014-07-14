@@ -1,3 +1,17 @@
 name: WordWarning
+version: 0.0.3
+description: Allows the warning of players on usage of certain terms in the chat, but doesn't prevent them from using them
+
+author: Gareth Coles
+
 main: com.archivesmc.wordwarning.WordWarning
-version: 0.0.2b1
+database: false
+depend: [Vault]
+
+permissions:
+    wordwarning.*:
+        children:
+            wordwarning.bypass
+        description: All the WordWarning permissions
+    wordwarning.bypass:
+        description: Use configured chat terms without being warned (bypass the entire plugin)

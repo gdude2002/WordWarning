@@ -23,6 +23,11 @@ public class ChatListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onChat(AsyncPlayerChatEvent event) {
+        // Check to see if the player has a bypass
+        if (this.plugin.permissions.has(event.getPlayer(), "wordwarning.bypass")) {
+            return;
+        }
+
         // Check the message for a matched term
         String match = this.plugin.checkMessage(event.getMessage(), event.getPlayer().getUniqueId());
 
