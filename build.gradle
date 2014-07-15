@@ -1,4 +1,9 @@
 apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.7
+version = '0.0.3'
+group = "com.archivesmc.wordwarning"
 
 repositories {
     flatDir {
