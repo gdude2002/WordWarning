@@ -20,6 +20,10 @@ repositories {
     }
 }
 
+jar {
+    from sourceSets.main.allJava
+}
+
 dependencies {
     compile 'net.milkbowl:Vault:1.4.1'
     compile 'org.bukkit:bukkit:1.7.9-R0.2'
