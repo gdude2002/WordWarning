@@ -22,9 +22,10 @@ repositories {
 
 jar {
     from sourceSets.main.allJava
+    archiveName = "WordWarning-${version}.jar"
 }
 
 dependencies {
-    compile 'net.milkbowl:Vault:1.4.1'
+    compile 'net.milkbowl.vault:Vault:1.4.1'
     compile 'org.bukkit:bukkit:1.7.9-R0.2'
 }
