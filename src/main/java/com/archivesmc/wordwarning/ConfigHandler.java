@@ -22,8 +22,6 @@ public class ConfigHandler {
             this.plugin.saveDefaultConfig();
         }
 
-        this.reload();
-
         this.config = this.plugin.getConfig();
     }
 
