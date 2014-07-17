@@ -1,7 +1,7 @@
-**WordWarning** | [Painter](https://github.com/gdude2002/Painter)
-
 WordWarning
 ===========
+
+My plugins: **WordWarning** | [Painter](https://github.com/gdude2002/Painter)
 
 Simple bukkit plugin for warning people on certain terms in chat (and then allowing them to continue)
 
@@ -28,3 +28,5 @@ Compilation of the plugin is fairly simple.
 I use Gradle instead of Maven simply because I don't like Maven, and Gradle is much easier to work with.
 If you need to do Maven things, you can do `gradle install`, which will generate poms and install the plugin
 into your local maven repository. Poms are generated in `build/poms/`.
+
+My plugins: **WordWarning** | [Painter](https://github.com/gdude2002/Painter)
