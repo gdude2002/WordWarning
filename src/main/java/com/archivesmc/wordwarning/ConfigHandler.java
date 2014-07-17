@@ -26,12 +26,13 @@ public class ConfigHandler {
     }
 
     public void update() {
-        String version = this.config.getString("version", "");
+        String version = this.getVersion();
 
         switch (version) {
             case "":
                 // No version in the config
                 this.config.set("version", this.plugin.getDescription().getVersion());
+                this.reload();
         }
     }
 
