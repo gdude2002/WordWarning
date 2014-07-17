@@ -35,7 +35,8 @@ public class ChatListener implements Listener {
             // Cancel the chat event
             event.setCancelled(true);
 
-            if (! this.plugin.usageMap.containsKey(match)) { // More checking to make sure we have the term already
+            if (! this.plugin.usageMap.containsKey(match)) {
+                // More checking to make sure we have the term already
                 this.plugin.usageMap.put(match, new HashSet<UUID>());
             }
 
@@ -58,16 +59,16 @@ public class ChatListener implements Listener {
                     "<%s> %s",  event.getPlayer().getDisplayName(), event.getMessage()
             ));
 
-            if (! this.plugin.config.getPreMessage().isEmpty()) { // If the pre-message isn't empty..
-                // Then send it to the player
+            if (! this.plugin.config.getPreMessage().isEmpty()) {
+                // If the pre-message isn't empty, then send it to the player
                 event.getPlayer().sendMessage(this.plugin.config.getPreMessage());
             }
 
             // Send this term's warning message
             event.getPlayer().sendMessage(message);
 
-            if (! this.plugin.config.getPostMessage().isEmpty()) { // If the post-message isn't empty..
-                // Then send it to the player
+            if (! this.plugin.config.getPostMessage().isEmpty()) {
+                // If the post-message isn't empty, then send it to the player
                 event.getPlayer().sendMessage(this.plugin.config.getPostMessage());
             }
         }
