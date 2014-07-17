@@ -5,6 +5,10 @@ Simple bukkit plugin for warning people on certain terms in chat (and then allow
 
 Please see [the page on BukkitDev](http://dev.bukkit.org/bukkit-plugins/wordwarning/) for full usage documentation.
 
+You can find development builds [on Bamboo](http://bamboo.gserv.me/browse/PLUG-WORD).
+Remember, they haven't been approved by the BukkitDev staff! Use them at your own risk (but remember, you can check the
+source included in the jar).
+
 Compiling
 =========
 
