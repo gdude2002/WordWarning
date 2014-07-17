@@ -8,3 +8,5 @@ terms:
     # Blocked term, and the message to send.
     # Can contain {PLAYER}, which will be replaced with the the player's username.
     cupcake: "&c\u00BB &1{PLAYER}&6, are you sure you want to talk about &1cupcakes&6? &1Muffins&6 are way better!"
+
+version: 0.0.3
