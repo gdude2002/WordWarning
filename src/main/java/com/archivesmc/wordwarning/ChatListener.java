@@ -44,7 +44,7 @@ public class ChatListener implements Listener {
             this.plugin.usageMap.get(match).add(event.getPlayer().getUniqueId());
 
             // Get the warning message
-            String message = (String) this.plugin.terms.get(match);
+            String message = (String) this.plugin.config.getTerms().get(match);
 
             // Replace {PLAYER} in the message with the player's display name
             message = message.replace("{PLAYER}", event.getPlayer().getDisplayName());
@@ -58,17 +58,17 @@ public class ChatListener implements Listener {
                     "<%s> %s",  event.getPlayer().getDisplayName(), event.getMessage()
             ));
 
-            if (! this.plugin.preMessage.isEmpty()) { // If the pre-message isn't empty..
+            if (! this.plugin.config.getPreMessage().isEmpty()) { // If the pre-message isn't empty..
                 // Then send it to the player
-                event.getPlayer().sendMessage(this.plugin.preMessage);
+                event.getPlayer().sendMessage(this.plugin.config.getPreMessage());
             }
 
             // Send this term's warning message
             event.getPlayer().sendMessage(message);
 
-            if (! this.plugin.postMessage.isEmpty()) { // If the post-message isn't empty..
+            if (! this.plugin.config.getPostMessage().isEmpty()) { // If the post-message isn't empty..
                 // Then send it to the player
-                event.getPlayer().sendMessage(this.plugin.postMessage);
+                event.getPlayer().sendMessage(this.plugin.config.getPostMessage());
             }
         }
     }
