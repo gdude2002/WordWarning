@@ -25,6 +25,34 @@ jar {
     archiveName = "WordWarning-${version}.jar"
 }
 
+artifacts {
+    archives jar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = "WordWarning"
+            repository(url: "file://localhost/var/www/gserv/cherry/repos/maven/")
+        }
+    }
+}
+
+publishing {
+    publications {
+        ivyJava(IvyPublication) {
+            from components.java
+            module "WordWarning"
+        }
+    }
+    repositories {
+        ivy {
+            name "publish"
+            url "/var/www/gserv/cherry/repos/ivy/"
+        }
+    }
+}
+
 dependencies {
     compile 'net.milkbowl.vault:Vault:1.4.1'
     compile 'org.bukkit:bukkit:1.7.9-R0.2'
