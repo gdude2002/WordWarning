@@ -8,11 +8,7 @@ package com.archivesmc.wordwarning;
  * message.
  */
 
-import net.milkbowl.vault.permission.Permission;
-
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 import java.util.*;
 
@@ -27,21 +23,11 @@ public final class WordWarning extends JavaPlugin {
     // Listener for chat events
     public ChatListener listener;
 
-    // Vault permissions handler
-    public Permission permissions;
-
     @Override
     public void onEnable() {
         // Load up the config
         this.config = new ConfigHandler(this);
         this.usageMap = new HashMap<>();
-
-        // Load up permissions
-        if (! this.setupPermissions()) {
-            this.getLogger().warning("Unable to load Vault. Please make sure it's installed and enabled.");
-            this.getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
 
         // Create a new chat listener and register it
         listener = new ChatListener(this);
@@ -52,12 +38,6 @@ public final class WordWarning extends JavaPlugin {
 
     public void reload() {
         this.config.reload();
-    }
-
-    private boolean setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        this.permissions = rsp.getProvider();
-        return this.permissions != null;
     }
 
     public String checkMessage(String message, UUID user) {

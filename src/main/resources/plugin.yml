@@ -1,5 +1,5 @@
 name: WordWarning
-version: 0.0.4
+version: 0.0.5
 description: Allows the warning of players on usage of certain terms in the chat, but doesn't prevent them from using them
 
 author: Gareth Coles

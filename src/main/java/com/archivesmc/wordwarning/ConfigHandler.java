@@ -33,6 +33,25 @@ public class ConfigHandler {
                 // No version in the config
                 this.config.set("version", this.plugin.getDescription().getVersion());
                 this.reload();
+                break;
+            case "0.0.4":
+                this.config.set("version", this.plugin.getDescription().getVersion());
+                this.reload();
+                break;
+            case "0.0.5":
+                // Correct version
+                break;
+            default:
+                this.plugin.getLogger().warning(
+                        String.format("Unknown version in config: %s", version)
+                );
+                this.plugin.getLogger().warning(
+                        String.format("Setting to %s", this.plugin.getDescription().getVersion())
+                );
+
+                this.config.set("version", this.plugin.getDescription().getVersion());
+                this.reload();
+                break;
         }
     }
 
