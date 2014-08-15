@@ -6,7 +6,6 @@ author: Gareth Coles
 
 main: com.archivesmc.wordwarning.WordWarning
 database: false
-depend: [Vault]
 
 permissions:
     wordwarning.*:
