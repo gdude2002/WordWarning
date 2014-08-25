@@ -5,7 +5,7 @@ apply plugin: 'maven'
 apply plugin: 'ivy-publish'
 
 sourceCompatibility = 1.7
-version = '0.0.4'
+version = '0.0.5'
 group = "com.archivesmc.wordwarning"
 
 repositories {
